@@ -7,7 +7,7 @@
 
 # Getting Started
 
-- Install with `npm i boo -g`
-- Create a new project with `boo init`
+- Install with `npm i bookly -g`
+- Create a new project with `bookly init`
 
 ...
