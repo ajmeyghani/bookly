@@ -1,5 +1,5 @@
 {
-  "name": "boo",
+  "name": "bookly",
   "version": "1.0.0",
   "description": "Create books in different formats with pandoc and node",
   "main": "index.js",
