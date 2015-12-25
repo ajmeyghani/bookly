@@ -9,7 +9,7 @@ GLOBAL.__blogger = require('./lib/helpers/blogger');
 require('shelljs/global');
 
 /* core */
-var app = require('./config');
+var app = require('./lib/config');
 var fs = require('fs-extra');
 var program = require('commander');
 var inquirer = require('inquirer');
@@ -28,8 +28,10 @@ var global = { keyword: process.argv[2] };
 program
 	.version(app.version)
 	.usage("<command> [options]")
-	.option("-t, --to <format>", "File format to convert to: pdf, epub, html, mobi, md")
-	.option("-c, --config <config file>", "The config file containing book name, input and output paths");
+	.option("-f, --formats <formats>", "File format to convert to: `pdf, epub, html, mobi, md`")
+	.option("-c, --config <config file>", "The config file containing book name, input and output paths")
+  .option("-a, --all-formats", "If present, it will build the book in all formats")
+  .option("-e, --chapters-only", "If you only want to build each chapter (pdf and html)")
 	// .on("--help", function(){ __blogger.printHelp() }) // for custom help
 
 action.add(
@@ -39,7 +41,12 @@ action.add(
 		description: "Create the book in different formats"
 	},
 	function(prompt, converTo) {
-		server.build({format: prompt.to, config: prompt.config});
+		server.build({
+      formats: prompt.formats,
+      config: prompt.config,
+      isChaptersOnly: prompt.chaptersOnly,
+      isAll: prompt.allFormats
+    });
 });
 
 
