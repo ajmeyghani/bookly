@@ -1,10 +1,9 @@
 {
   "name": "boo",
   "version": "1.0.0",
-  "description": "",
+  "description": "Create books in different formats with pandoc and node",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Stealth <st32lth@gmail.com> (http://github.com/st32lth)",
   "license": "ISC"
