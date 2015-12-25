@@ -3,8 +3,25 @@
   "version": "1.0.0",
   "description": "Create books in different formats with pandoc and node",
   "main": "index.js",
-  "scripts": {
+  "bin": {
+    "bookly": "bookly.js"
   },
+  "scripts": {},
   "author": "Stealth <st32lth@gmail.com> (http://github.com/st32lth)",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^1.0.0",
+    "chip": "0.0.5",
+    "colors": "^1.1.0",
+    "commander": "^2.8.1",
+    "fs-extra": "^0.26.3",
+    "glob": "^5.0.5",
+    "handlebars": "^3.0.3",
+    "inquirer": "^0.8.2",
+    "jsonfile": "^2.0.0",
+    "ncp": "^2.0.0",
+    "path": "^0.11.14",
+    "prompt": "^0.2.14",
+    "shelljs": "^0.4.0"
+  }
 }
