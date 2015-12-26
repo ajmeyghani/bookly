@@ -38,8 +38,15 @@ A simple command-line tool for generating ebooks or documents in different forma
 
 Then you can use the following commands to the build the book:
 
-- Build the book in all formats: `bookly build -a`
+## Build Each Chapter
+
 - Build the chapters only: `bookly build -e`
+- Convert each html chapter to pdf: `bookly build -e && bookly build -r`
+
+## Build the Book
+
+- Build the book in all formats: `bookly build -a`
+
 - Build the book in give formats:
 
 		bookly build -f 'format1, format2, ...'
