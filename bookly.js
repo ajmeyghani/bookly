@@ -6,7 +6,6 @@ GLOBAL.__brMsg = [];
 
 /* Utilities */
 GLOBAL.__blogger = require('./lib/helpers/blogger');
-require('shelljs/global');
 
 /* core */
 var app = require('./lib/config');
