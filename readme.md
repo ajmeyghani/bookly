@@ -43,10 +43,9 @@ Then you can use the following commands to the build the book:
 - Build the book in give formats:
 
 		bookly build -f 'format1, format2, ...'
-		
-	possible formats are: `pdf`, `html`, `epub`, `mobi`, `md`
-	
-	For example, the following converts the book in `pdf` and `html`
-	
-		bookly build -f `pdf, html`
 
+	possible formats are: `pdf`, `html`, `epub`, `mobi`, `md`
+
+	For example, the following converts the book in `pdf` and `html`
+
+		bookly build -f 'pdf, html'

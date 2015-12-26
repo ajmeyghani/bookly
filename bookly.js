@@ -31,6 +31,7 @@ program
 	.option("-c, --config <config file>", "The config file containing book name, input and output paths")
   .option("-a, --all-formats", "If present, it will build the book in all formats")
   .option("-e, --chapters-only", "If you only want to build each chapter (pdf and html)")
+  .option("-r, --render", "Can be executed after build -e. Converts each chapter to pdf with phantomjs")
 	// .on("--help", function(){ __blogger.printHelp() }) // for custom help
 
 action.add(
@@ -43,6 +44,7 @@ action.add(
 		server.build({
       formats: prompt.formats,
       config: prompt.config,
+      isRender: prompt.render,
       isChaptersOnly: prompt.chaptersOnly,
       isAll: prompt.allFormats
     });
