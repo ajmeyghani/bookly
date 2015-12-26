@@ -15,7 +15,7 @@ var inquirer = require('inquirer');
 var action = require('./lib/action');
 
 /* Commands */
-var server = require("./lib/actions/builder");
+var builder = require("./lib/actions/builder");
 var scaffold = require("./lib/actions/scaffold");
 var init = require('./lib/actions/init');
 // var custom = require(__base + "actions/custom");
@@ -41,7 +41,7 @@ action.add(
 		description: "Create the book in different formats"
 	},
 	function(prompt, converTo) {
-		server.build({
+		builder.build({
       formats: prompt.formats,
       config: prompt.config,
       isRender: prompt.render,
@@ -50,6 +50,18 @@ action.add(
     });
 });
 
+action.add(
+  {
+    name: "mdx",
+    // arg: "format",
+    description: "Creates mdx files for pandoc fenced codes"
+  },
+  function(prompt, converTo) {
+    builder.makeMdx({
+      config: prompt.config,
+      isAll: prompt.allFormats
+    });
+});
 
 action.add(
   {
