@@ -61,6 +61,8 @@ Then you can use the following commands to the build the book:
 
 ### Options
 
+The `build` command accepts the following options:
+
 - `-c (--config)`: Specifies the name of the `config` file in the root of the project.
 
 - `-e (--chapters-only)`: Only converts each chapter to html: `bookly build -e`
