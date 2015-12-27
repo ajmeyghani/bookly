@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 GLOBAL.__base = require('path').dirname(require.main.filename) + "/";
 GLOBAL.__cwd = process.cwd() + "/";
-GLOBAL.__brErrors = [];
-GLOBAL.__brMsg = [];
 
 /* Utilities */
 GLOBAL.__blogger = require('./lib/helpers/blogger');
@@ -11,14 +9,11 @@ GLOBAL.__blogger = require('./lib/helpers/blogger');
 var app = require('./lib/config');
 var fs = require('fs-extra');
 var program = require('commander');
-var inquirer = require('inquirer');
 var action = require('./lib/action');
 
 /* Commands */
-var builder = require("./lib/actions/builder");
-var scaffold = require("./lib/actions/scaffold");
 var init = require('./lib/actions/init');
-// var custom = require(__base + "actions/custom");
+var builder = require("./lib/actions/builder");
 
 /* global settings */
 var global = { keyword: process.argv[2] };
@@ -33,6 +28,7 @@ program
   .option("-e, --chapters-only", "If you only want to build each chapter (pdf and html)")
   .option("-r, --render", "Can be executed after build -e. Converts each chapter to pdf with phantomjs")
   .option("-p, --patterns <patterns>", "Input patterns to use: eg. '**/*.markdown, **/**/*.md'")
+  .option("-n, --version-number <versionnumber>", "Specifies a version for the book")
 	// .on("--help", function(){ __blogger.printHelp() }) // for custom help
 
 action.add(
@@ -48,20 +44,8 @@ action.add(
       isRender: prompt.render,
       isChaptersOnly: prompt.chaptersOnly,
       patterns: prompt.patterns ,
-      isAll: prompt.allFormats
-    });
-});
-
-action.add(
-  {
-    name: "mdx",
-    // arg: "format",
-    description: "Creates mdx files for pandoc fenced codes"
-  },
-  function(prompt, converTo) {
-    builder.makeMdx({
-      config: prompt.config,
-      isAll: prompt.allFormats
+      isAll: prompt.allFormats,
+      version: prompt.versionNumber
     });
 });
 
@@ -74,27 +58,6 @@ action.add(
   function(prompt, projectName) {
     init.run({name: projectName});
 });
-
-
-/* example with prompt */
-// -------------
-	/**
-	* ##`bookly custom -k <custom thing> -s <settings-file>`
-	*
-	* ### Parameters: ###
-	*
-	* 1. __k__ : *string* (required) a custom thing. Could be the name of an action.
-	* 2. __s__ : *string* The path to the settings.json file that has the options.
-  *
-	*/
-// action.add(
-// 	{
-// 		name: "custom",
-// 		description: "Test task without prompt. -k: task name, -s: path to settings.json"
-// 	},
-// 	function(data) {
-// 		custom.runNoPrompt({kind: data.kind, settings: data.settings, prompt: data});
-// });
 
 action.add(
 	{
@@ -122,18 +85,6 @@ action.add(
 	},
 	function(data, what) {
 		__blogger.docsFor(what);
-});
-
-/* booly b inputfolder format1, format2 */
-action.add(
-	{
-		name: "b",
-		arg:"input folder",
-		params: "configs",
-		description: "Shortcut for the build command"
-	},
-	function(data, t, ops) {
-		scaffold.run(t, ops, {flag1: "flag1 value", flag2: "flag2 value"});
 });
 
 /* catch invalid commands */

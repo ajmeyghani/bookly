@@ -92,3 +92,7 @@ The `build` command accepts the following options:
         bookly build -a
 
     This will convert each chapter to html. In addition, it will convert the book to `pdf`, `html`, `epub` and `mobi` formats.
+
+- `-n (--version-number)`: Version number value for the book:
+
+        bookly build -f 'pdf' -n 'v0.0.1'
