@@ -1,6 +1,6 @@
 {
   "name": "bookly",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "description": "Create books or documents in different formats with pandoc and node using markdown",
   "main": "lib/bookly.js",
   "bin": {
