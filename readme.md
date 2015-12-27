@@ -34,7 +34,9 @@ A simple command-line tool for generating ebooks or documents in different forma
 - Install with `npm i bookly -g`
 - Create a new project with `bookly new docname`
 - Go to your book folder: `cd docname`
-- Modify the config file in `./config.js`
+- Update the book name in `./config.js` if you need to.
+- Update `book.txt`
+- Start writing the book (or your document) in the `chapters` folder.
 
 Then you can use the following commands to the build the book:
 
@@ -56,3 +58,35 @@ Then you can use the following commands to the build the book:
 	For example, the following converts the book in `pdf` and `html`
 
 		bookly build -f 'pdf, html'
+
+### Options
+
+- `-c (--config)`: Specifies the name of the `config` file in the root of the project.
+
+- `-e (--chapters-only)`: Only converts each chapter to html: `bookly build -e`
+
+- `-r (--render)`: Render html chapters with phantom: `bookly build -r`
+
+    Renders each chapter in pdf. **Only after each chapter is created with the `e` or `a` flag:**, i.e.
+
+        bookly build -e
+
+- `-p (--patterns)`: List of read file patterns, eg:
+
+        bookly build -f 'html' -p '**/*.markdown'
+
+    The `-p` defines a list of pattern(s) that overrides the default pattern (`**/*.md`). Multiple patterns can be passed in:
+
+        bookly -p '*.md, **/*.md'
+
+    **Note:** That pattern should exist, otherwise Pandoc will throw an error.
+
+- `-f (--formats)`: Specifies book output formats. Possible options are: `pdf`, `epub`, `html`, `mobi`. Multiple formats can be given as a list:
+
+        bookly build -f 'html, epub, pdf'
+
+- `-a (--all)`: Converts the book to all formats:
+
+        bookly build -a
+
+    This will convert each chapter to html. In addition, it will convert the book to `pdf`, `html`, `epub` and `mobi` formats.

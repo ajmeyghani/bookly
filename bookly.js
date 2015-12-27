@@ -32,6 +32,7 @@ program
   .option("-a, --all-formats", "If present, it will build the book in all formats")
   .option("-e, --chapters-only", "If you only want to build each chapter (pdf and html)")
   .option("-r, --render", "Can be executed after build -e. Converts each chapter to pdf with phantomjs")
+  .option("-p, --patterns <patterns>", "Input patterns to use: eg. '**/*.markdown, **/**/*.md'")
 	// .on("--help", function(){ __blogger.printHelp() }) // for custom help
 
 action.add(
@@ -46,6 +47,7 @@ action.add(
       config: prompt.config,
       isRender: prompt.render,
       isChaptersOnly: prompt.chaptersOnly,
+      patterns: prompt.patterns ,
       isAll: prompt.allFormats
     });
 });
