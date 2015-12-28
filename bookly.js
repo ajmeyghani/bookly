@@ -14,6 +14,7 @@ var action = require('./lib/action');
 /* Commands */
 var init = require('./lib/actions/init');
 var builder = require("./lib/actions/builder");
+var concat = require("./lib/actions/concat");
 
 /* global settings */
 var global = { keyword: process.argv[2] };
@@ -29,6 +30,7 @@ program
   .option("-r, --render", "Can be executed after build -e. Converts each chapter to pdf with phantomjs")
   .option("-p, --patterns <patterns>", "Input patterns to use: eg. '**/*.markdown, **/**/*.md'")
   .option("-n, --version-number <versionnumber>", "Specifies a version for the book")
+  .option("-m, --manuscript <folder name>", "Folder name for the manuscript")
 	// .on("--help", function(){ __blogger.printHelp() }) // for custom help
 
 action.add(
@@ -57,6 +59,20 @@ action.add(
   },
   function(prompt, projectName) {
     init.run({name: projectName});
+});
+
+action.add(
+  {
+    name: "concat",
+    // arg: "name",
+    description: "Concats files in each chapter folder into one"
+  },
+  function(prompt, projectName) {
+    concat({
+      config: prompt.config,
+      patterns: prompt.patterns,
+      manuscript: prompt.manuscript
+    });
 });
 
 action.add(
