@@ -59,9 +59,20 @@ Then you can use the following commands to the build the book:
 
 		bookly build -f 'pdf, html'
 
-### Options
+## Creating manuscript
 
-The `build` command accepts the following options:
+You can use the `concat` command to concatenate all the files in the input folder and create a manuscript folder. For example:
+
+    input/ch1/ch1.md, input/ch1/ch1-1.md` outputs `manuscript/ch1/ch1.md
+
+
+You can use the `-m` flag to specify a name for the manuscript folder:
+
+    bookly concat -m 'foldername'
+
+# Options
+
+Most of the options are used with the `build` command. Below is the full list of all options:
 
 - `-c (--config)`: Specifies the name of the `config` file in the root of the project.
 
@@ -96,3 +107,7 @@ The `build` command accepts the following options:
 - `-n (--version-number)`: Version number value for the book:
 
         bookly build -f 'pdf' -n 'v0.0.1'
+
+- `-m (--manuscript)`: Used with the `concat` command: folder name for the manuscript:
+
+        bookly concat -m 'mymanuscript'
