@@ -53,7 +53,7 @@ Then you can use the following commands to the build the book:
 
 		bookly build -f 'format1, format2, ...'
 
-	possible formats are: `pdf`, `html`, `epub`, `mobi`, `md`, `docx`
+	possible formats are: `pdf`, `html`, `epub`, `mobi`, `md`, `docx`, `tex`
 
 	For example, the following converts the book in `pdf` and `html`
 
@@ -83,7 +83,7 @@ The `build` command accepts the following options:
 
     **Note:** That pattern should exist, otherwise Pandoc will throw an error.
 
-- `-f (--formats)`: Specifies book output formats. Possible options are: `pdf`, `epub`, `html`, `mobi`, `md`, `docx`. Multiple formats can be given as a list:
+- `-f (--formats)`: Specifies book output formats. Possible options are: `pdf`, `epub`, `html`, `mobi`, `md`, `docx`, `tex`. Multiple formats can be given as a list:
 
         bookly build -f 'html, epub, pdf'
 
@@ -91,7 +91,7 @@ The `build` command accepts the following options:
 
         bookly build -a
 
-    This will convert each chapter to html. In addition, it will convert the book to `pdf`, `html`, `epub`, `mobi`, `md`, and `docx` formats.
+    This will convert each chapter to html. In addition, it will convert the book to `pdf`, `html`, `epub`, `mobi`, `md`, `docx`, and `tex` formats.
 
 - `-n (--version-number)`: Version number value for the book:
 
