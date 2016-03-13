@@ -1,6 +1,6 @@
 # Bookly
 
-A simple command-line tool for generating ebooks or documents in different formats. It uses pandoc behind the scense to conver the documents.
+A simple command-line tool for generating ebooks or documents in different formats. It uses pandoc behind the scense to conver the documents
 
 # Requirements
 
