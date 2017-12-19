@@ -31,8 +31,8 @@ A simple command-line tool for generating ebooks or documents in different forma
 
 # Getting Started
 
-- Install with `npm i bookly -g`
-- Create a new project with `bookly new docname`
+- Install with `npm i bookly2 -g`
+- Create a new project with `bookly2 new docname`
 - Go to your book folder: `cd docname`
 - Update the book name in `./config.js` if you need to.
 - Update `book.txt`
@@ -42,22 +42,22 @@ Then you can use the following commands to the build the book:
 
 ## Build Each Chapter
 
-- Build the chapters only: `bookly build -e`
-- Convert each html chapter to pdf: `bookly build -e && bookly build -r`
+- Build the chapters only: `bookly2 build -e`
+- Convert each html chapter to pdf: `bookly2 build -e && bookly2 build -r`
 
 ## Build the Book
 
-- Build the book in all formats: `bookly build -a`
+- Build the book in all formats: `bookly2 build -a`
 
 - Build the book in give formats:
 
-		bookly build -f 'format1, format2, ...'
+		bookly2 build -f 'format1, format2, ...'
 
 	possible formats are: `pdf`, `html`, `epub`, `mobi`, `md`, `docx`, `tex`
 
 	For example, the following converts the book in `pdf` and `html`
 
-		bookly build -f 'pdf, html'
+		bookly2 build -f 'pdf, html'
 
 ## Creating manuscript
 
@@ -68,7 +68,7 @@ You can use the `concat` command to concatenate all the files in the input folde
 
 You can use the `-m` flag to specify a name for the manuscript folder:
 
-    bookly concat -m 'foldername'
+    bookly2 concat -m 'foldername'
 
 # Options
 
@@ -76,38 +76,38 @@ Most of the options are used with the `build` command. Below is the full list of
 
 - `-c (--config)`: Specifies the name of the `config` file in the root of the project.
 
-- `-e (--chapters-only)`: Only converts each chapter to html: `bookly build -e`
+- `-e (--chapters-only)`: Only converts each chapter to html: `bookly2 build -e`
 
-- `-r (--render)`: Render html chapters with phantom: `bookly build -r`
+- `-r (--render)`: Render html chapters with phantom: `bookly2 build -r`
 
     Renders each chapter in pdf. **Only after each chapter is created with the `e` or `a` flag:**, i.e.
 
-        bookly build -e
+        bookly2 build -e
 
 - `-p (--patterns)`: List of read file patterns, eg:
 
-        bookly build -f 'html' -p '**/*.markdown'
+        bookly2 build -f 'html' -p '**/*.markdown'
 
     The `-p` defines a list of pattern(s) that overrides the default pattern (`**/*.md`). Multiple patterns can be passed in:
 
-        bookly -p '*.md, **/*.md'
+        bookly2 -p '*.md, **/*.md'
 
     **Note:** That pattern should exist, otherwise Pandoc will throw an error.
 
 - `-f (--formats)`: Specifies book output formats. Possible options are: `pdf`, `epub`, `html`, `mobi`, `md`, `docx`, `tex`. Multiple formats can be given as a list:
 
-        bookly build -f 'html, epub, pdf'
+        bookly2 build -f 'html, epub, pdf'
 
 - `-a (--all)`: Converts the book to all formats:
 
-        bookly build -a
+        bookly2 build -a
 
     This will convert each chapter to html. In addition, it will convert the book to `pdf`, `html`, `epub`, `mobi`, `md`, `docx`, and `tex` formats.
 
 - `-n (--version-number)`: Version number value for the book:
 
-        bookly build -f 'pdf' -n 'v0.0.1'
+        bookly2 build -f 'pdf' -n 'v0.0.1'
 
 - `-m (--manuscript)`: Used with the `concat` command: folder name for the manuscript:
 
-        bookly concat -m 'mymanuscript'
+        bookly2 concat -m 'mymanuscript'
